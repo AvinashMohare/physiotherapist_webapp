@@ -8,12 +8,6 @@ import { useState } from "react";
 
 const SideBar = ({ handleOptionClick }) => {
     const [selectedOption, setSelectedOption] = useState(0);
-
-    const handleItemClick = (index) => {
-        setSelectedOption(index);
-        handleOptionClick(index); // Notify the Home component of the selected option
-    };
-
     //Array of items
     const sidebarItems = [
         {
@@ -76,16 +70,7 @@ const SideBar = ({ handleOptionClick }) => {
         <div className={classes.rootSidebar}>
             <div className={classes.sidebar}>
                 {sidebarItems.map((item, index) => (
-                    <a
-                        href={item.link}
-                        key={index}
-                        onClick={() => handleItemClick(index)}
-                        className={
-                            index === selectedOption
-                                ? classes.selectedOption
-                                : ""
-                        }
-                    >
+                    <a key={index}>
                         <div className={classes.icon}>{item.icon}</div>
                         <div className={classes.option}>
                             <span>{item.text}</span>
